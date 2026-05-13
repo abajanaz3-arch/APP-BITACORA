@@ -35,7 +35,7 @@ label {
     font-size: 0.9rem;
 }
 
-input, textarea {
+input, textarea, select {
     width: 100%;
     padding: 14px;
     margin-bottom: 15px;
@@ -44,6 +44,13 @@ input, textarea {
     font-size: 16px;
     background-color: #f9f9f9;
     outline: none;
+}
+
+select {
+    cursor: pointer;
+    appearance: auto;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
 }
 
 .horas {

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bitacora-v1';
+const CACHE_NAME = 'bitacora-v2';
 const assets = [
   './',
   './index.html',
@@ -15,13 +15,32 @@ self.addEventListener('install', e => {
       return cache.addAll(assets);
     })
   );
+  self.skipWaiting();
 });
 
-// Estrategia: Cache First (Busca en el celular antes que en internet)
+// Limpia versiones antiguas del cache para que se vean los cambios recientes.
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      );
+    })
+  );
+  self.clients.claim();
+});
+
+// Estrategia: usa primero la red para evitar mostrar archivos viejos.
 self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then(res => {
-      return res || fetch(e.request);
+    fetch(e.request).then(res => {
+      const copia = res.clone();
+      caches.open(CACHE_NAME).then(cache => cache.put(e.request, copia));
+      return res;
+    }).catch(() => {
+      return caches.match(e.request);
     })
   );
 });
