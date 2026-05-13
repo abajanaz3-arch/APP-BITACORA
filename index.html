@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mi Bitácora de Movilización</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Registro de Movilización</h1>
+        
+        <form id="bitacoraForm">
+            <label>Fecha:</label>
+            <input type="date" id="fecha" required>
+
+            <div class="horas">
+                <div>
+                    <label>Hora Entrada:</label>
+                    <input type="time" id="horaEntrada" step="60" required>
+                </div>
+                <div>
+                    <label>Hora Salida:</label>
+                    <input type="time" id="horaSalida" step="60" required>
+                </div>
+            </div>
+
+            <label>Desde:</label>
+            <input type="text" id="Desde" placeholder="Lugar de salida" required>
+
+            <label>Hasta:</label>
+            <input type="text" id="Hasta" placeholder="Lugar de llegada" required>
+
+            <label>Supervisor:</label>
+            <input type="text" id="supervisor" placeholder="Nombre del supervisor" required>
+
+            <label>Motivo de Movilización:</label>
+            <textarea id="motivo" placeholder="Ej: Visita a cliente..." required></textarea>
+
+            <button type="submit">Guardar Registro</button>
+        </form>
+
+        <h2>Historial</h2>
+        <div class="table-container">
+            <table id="tablaRegistros">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Entrada</th>
+                        <th>Salida</th>
+                        <th>Motivo</th>
+                        <th>Supervisor</th> 
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
