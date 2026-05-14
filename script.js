@@ -1,4 +1,6 @@
-// Registro del Service Worker para funcionamiento Offline
+let editIndex = null; // Variable para rastrear qué registro estamos editando
+
+// Registro del Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
@@ -22,7 +24,20 @@ document.getElementById('bitacoraForm').addEventListener('submit', function(e) {
         Hasta: document.getElementById('Hasta').value
     };
 
-    guardarEnLocalStorage(registro);
+    let registros = JSON.parse(localStorage.getItem('movilizaciones')) || [];
+
+    if (editIndex !== null) {
+        // Si estamos editando, reemplazamos el registro existente
+        registros[editIndex] = registro;
+        editIndex = null;
+        document.querySelector('button[type="submit"]').textContent = 'Guardar Registro';
+        document.querySelector('button[type="submit"]').style.backgroundColor = '#4818f2';
+    } else {
+        // Si es nuevo, lo añadimos al final
+        registros.push(registro);
+    }
+
+    localStorage.setItem('movilizaciones', JSON.stringify(registros));
     mostrarRegistros();
     document.getElementById('bitacoraForm').reset();
 });
@@ -41,16 +56,34 @@ function agregarFilaATabla(reg, index) {
         <td class="sup-name">${reg.supervisor}</td>
         <td>${reg.Desde}</td>
         <td>${reg.Hasta}</td>
-        <td>
+        <td class="acciones">
+            <button class="btn-editar" onclick="cargarParaEditar(${index})">✏️</button>
             <button class="btn-eliminar" onclick="eliminarRegistro(${index})">🗑️</button>
         </td>
     `;
 }
 
-function guardarEnLocalStorage(reg) {
+function cargarParaEditar(index) {
     let registros = JSON.parse(localStorage.getItem('movilizaciones')) || [];
-    registros.push(reg);
-    localStorage.setItem('movilizaciones', JSON.stringify(registros));
+    const reg = registros[index];
+
+    // Llenamos el formulario con los datos guardados
+    document.getElementById('fecha').value = reg.fecha;
+    document.getElementById('horaEntrada').value = reg.entrada;
+    document.getElementById('horaSalida').value = reg.salida;
+    document.getElementById('motivo').value = reg.motivo;
+    document.getElementById('supervisor').value = reg.supervisor;
+    document.getElementById('Desde').value = reg.Desde;
+    document.getElementById('Hasta').value = reg.Hasta;
+
+    // Cambiamos el estado de la app a edición
+    editIndex = index;
+    const btnGuardar = document.querySelector('button[type="submit"]');
+    btnGuardar.textContent = 'Actualizar Registro';
+    btnGuardar.style.backgroundColor = '#28a745'; // Color verde para indicar edición
+    
+    // Scroll hacia arriba para que el usuario vea el formulario lleno
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function eliminarRegistro(index) {
