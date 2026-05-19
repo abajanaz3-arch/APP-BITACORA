@@ -63,7 +63,7 @@ select {
 button {
   width: 100%;
   background-color: #ff0c10;
-  color: #000;
+  color: #000000;
   padding: 16px;
   border: none;
   border-radius: 10px;
@@ -76,14 +76,14 @@ button {
 .btn-tema {
   display: inline-block;
   background-color: #ff0c10;
-  color: #000;
+  color: #000000;
   padding: 8px 14px;
   border: none;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   width: auto;
 }
 
@@ -174,7 +174,7 @@ body.light-theme select {
 body.dark-theme input,
 body.dark-theme textarea,
 body.dark-theme select {
-  background-color: #333333;
+  background-color: #000000;
   color: #ffffff;
-  border: 1px solid #666;
+  border: 1px solid #000000;
 }
