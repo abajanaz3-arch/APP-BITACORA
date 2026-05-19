@@ -7,9 +7,40 @@
 
   <link rel="manifest" href="./manifest.json" />
   <meta name="theme-color" content="#1877f2" />
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" sizes="512x512" />
-
+  
   <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    /* Estilos para que el select se vea como en la imagen (fondo oscuro, texto claro, lista desplazable) */
+    .select-lugar {
+      background-color: #ff0000;
+      color: #151515;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+      width: 100%;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    select.select-lugar option {
+      background-color: #ff0000bb;
+      color: #000000;
+    }
+    .select-wrapper {
+      position: relative;
+    }
+    .select-wrapper::after {
+      content: "▾";
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #197e74;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -32,15 +63,92 @@
 
       <label for="motivo">Motivo</label>
       <textarea id="motivo" rows="2"></textarea>
+      
 
       <label for="supervisor">Supervisor</label>
       <input id="supervisor" type="text" />
 
       <label for="Desde">Desde</label>
-      <input id="Desde" type="text" />
+      <div class="select-wrapper">
+        <select id="Desde" class="select-lugar">
+          <option value=""></option>
+          <option>Acruxza</option>
+          <option>The Best</option>
+          <option>BodegasCarlota</option>
+          <option>Bodegas Alejandra</option>
+          <option>Bodegas Julian</option>
+          <option>Bodegas Mayte</option>
+          <option>Bodegas Papo</option>
+          <option>Buho 1</option>
+          <option>Buho 2</option>
+          <option>Casa</option>
+          <option>Casa NPG</option>
+          <option>Charlotte</option>
+          <option>H. De la E</option>
+          <option>H. Del Parque</option>
+          <option>H. Del Sur</option>
+          <option>Extancia</option>
+          <option>Extasis Duran</option>
+          <option>Extasis Norte</option>
+          <option>Green House</option>
+          <option>Orlando</option>
+          <option>Ext.Norte</option>
+          <option>Ext.Sur</option>
+          <option>Ext.Duran</option>
+          <option>Best</option>
+          <option>De la E</option>
+          <option>Del Sur</option>
+          <option>HDC</option>
+          <option>West</option>
+          <option>Lilax</option>
+          <option>Fortich/Buho1</option>
+          <option>Roxy</option>
+          <option>Queen</option>
+          <option>Del Parque</option>
+          <option>Lavanderia</option>
+        </select>
+      </div>
 
       <label for="Hasta">Hasta</label>
-      <input id="Hasta" type="text" />
+      <div class="select-wrapper">
+        <select id="Hasta" class="select-lugar">
+          <option value=""></option>
+          <option>Acruxza</option>
+          <option>The Best</option>
+          <option>BodegasCarlota</option>
+          <option>Bodegas Alejandra</option>
+          <option>Bodegas Julian</option>
+          <option>Bodegas Mayte</option>
+          <option>Bodegas Papo</option>
+          <option>Buho 1</option>
+          <option>Buho 2</option>
+          <option>Casa</option>
+          <option>Casa NPG</option>
+          <option>Charlotte</option>
+          <option>H. De la E</option>
+          <option>H. Del Parque</option>
+          <option>H. Del Sur</option>
+          <option>Extancia</option>
+          <option>Extasis Duran</option>
+          <option>Extasis Norte</option>
+          <option>Green House</option>
+          <option>Orlando</option>
+          <option>Ext.Norte</option>
+          <option>Ext.Sur</option>
+          <option>Ext.Duran</option>
+          <option>Best</option>
+          <option>De la E</option>
+          <option>Del Sur</option>
+          <option>HDC</option>
+          <option>West</option>
+          <option>Lilax</option>
+          <option>Fortich/Buho1</option>
+          <option>Roxy</option>
+          <option>Queen</option>
+          <option>Del Parque</option>
+          <option>Lavanderia</option>
+        </select>
+      </div>
 
       <button type="submit">Guardar Registro</button>
     </form>

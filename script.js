@@ -46,16 +46,16 @@ function agregarFilaATabla(reg, index) {
     const tabla = document.getElementById('tablaRegistros').getElementsByTagName('tbody')[0];
     const nuevaFila = tabla.insertRow();
     
-    const fechaFormateada = reg.fecha.split('-').reverse().join('/');
+    const fechaFormateada = reg.fecha ? reg.fecha.split('-').reverse().join('/') : '';
 
     nuevaFila.innerHTML = `
         <td>${fechaFormateada}</td>
-        <td>${reg.entrada}</td>
-        <td>${reg.salida}</td>
-        <td style="white-space: normal; min-width: 150px;">${reg.motivo}</td>
-        <td class="sup-name">${reg.supervisor}</td>
-        <td>${reg.Desde}</td>
-        <td>${reg.Hasta}</td>
+        <td>${reg.entrada || ''}</td>
+        <td>${reg.salida || ''}</td>
+        <td style="white-space: normal; min-width: 150px;">${reg.motivo || ''}</td>
+        <td class="sup-name">${reg.supervisor || ''}</td>
+        <td>${reg.Desde || ''}</td>
+        <td>${reg.Hasta || ''}</td>
         <td class="acciones">
             <button class="btn-editar" onclick="cargarParaEditar(${index})">✏️</button>
             <button class="btn-eliminar" onclick="eliminarRegistro(${index})">🗑️</button>
@@ -80,7 +80,7 @@ function cargarParaEditar(index) {
     editIndex = index;
     const btnGuardar = document.querySelector('button[type="submit"]');
     btnGuardar.textContent = 'Actualizar Registro';
-    btnGuardar.style.backgroundColor = '#28a745'; // Color verde para indicar edición
+    btnGuardar.style.backgroundColor = '#000000'; // Color verde para indicar edición
     
     // Scroll hacia arriba para que el usuario vea el formulario lleno
     window.scrollTo({ top: 0, behavior: 'smooth' });
