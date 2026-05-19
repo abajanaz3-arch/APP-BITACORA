@@ -1,128 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mi Bitácora de Movilización</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bitácora de Movilización</title>
+
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#1877f2" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" sizes="512x512" />
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>Bitácora de Movilización</h1>
 
-    <div class="container">
-        <h1>Registro de Movilización</h1>
-        
-        <form id="bitacoraForm">
-            <label>Fecha:</label>
-            <input type="date" id="fecha" required>
+    <form id="bitacoraForm">
+      <label for="fecha">Fecha</label>
+      <input id="fecha" type="date" required />
 
-            <div class="horas">
-                <div>
-                    <label>Hora Entrada:</label>
-                    <input type="time" id="horaEntrada" step="60" required>
-                </div>
-                <div>
-                    <label>Hora Salida:</label>
-                    <input type="time" id="horaSalida" step="60" required>
-                </div>
-            </div>
-
-<label>Desde:</label>
-            <select id="Desde" required>
-                <option value="" disabled selected>Seleccione un lugar...</option>
-                <option value="Acruxza">Acruxza</option>
-                <option value="Best">Best</option>
-                <option value="Bod.Carlota">Bod.Carlota</option>
-                <option value="Bodegas Alejandra">Bodegas Alejandra</option>
-                <option value="Bodegas Julian">Bodegas Julian</option>
-                <option value="Bodegas Mayte">Bodegas Mayte</option>
-                <option value="Bodegas Papo">Bodegas Papo</option>
-                <option value="Buho 1">Buho 1</option>
-                <option value="Buho 2">Buho 2</option>
-                <option value="Casa NPG">Casa NPG</option>
-                <option value="Charlotte">Charlotte</option>
-                <option value="De la E">De la E</option>
-                <option value="Del Parque">Del Parque</option>
-                <option value="Del Sur">Del Sur</option>
-                <option value="Extancia">Extancia</option>
-                <option value="Extasis Duran">Extasis Duran</option>
-                <option value="Extasis Norte">Extasis Norte</option>
-                <option value="Extasis Sur">Extasis Sur</option>
-                <option value="Fortich">Fortich</option>
-                <option value="Green House">Green House</option>
-                <option value="HDC">HDC</option>
-                <option value="Lavanderia">Lavanderia</option>
-                <option value="Lilax">Lilax</option>
-                <option value="Orlando">Orlando</option>
-                <option value="Queen">Queen</option>
-                <option value="Roxy">Roxy</option>
-                <option value="West">West</option>
-            </select>
-
-            <label>Hasta:</label>
-            <select id="Hasta" required>
-                <option value="" disabled selected>Seleccione un lugar...</option>
-                <option value="Acruxza">Acruxza</option>
-                <option value="Best">Best</option>
-                <option value="Bod.Carlota">Bod.Carlota</option>
-                <option value="Bodegas Alejandra">Bodegas Alejandra</option>
-                <option value="Bodegas Julian">Bodegas Julian</option>
-                <option value="Bodegas Mayte">Bodegas Mayte</option>
-                <option value="Bodegas Papo">Bodegas Papo</option>
-                <option value="Buho 1">Buho 1</option>
-                <option value="Buho 2">Buho 2</option>
-                <option value="Casa NPG">Casa NPG</option>
-                <option value="Charlotte">Charlotte</option>
-                <option value="De la E">De la E</option>
-                <option value="Del Parque">Del Parque</option>
-                <option value="Del Sur">Del Sur</option>
-                <option value="Extancia">Extancia</option>
-                <option value="Extasis Duran">Extasis Duran</option>
-                <option value="Extasis Norte">Extasis Norte</option>
-                <option value="Extasis Sur">Extasis Sur</option>
-                <option value="Fortich">Fortich</option>
-                <option value="Green House">Green House</option>
-                <option value="HDC">HDC</option>
-                <option value="Lavanderia">Lavanderia</option>
-                <option value="Lilax">Lilax</option>
-                <option value="Orlando">Orlando</option>
-                <option value="Queen">Queen</option>
-                <option value="Roxy">Roxy</option>
-                <option value="West">West</option>
-            </select>
-
-            <label>Supervisor:</label>
-            <input type="text" id="supervisor" placeholder="Nombre del supervisor" required>
-
-            <label>Motivo de Movilización:</label>
-            <textarea id="motivo" placeholder="Ej: Visita a cliente..." required></textarea>
-
-            <button type="submit">Guardar Registro</button>
-        </form>
-
-        <h2>Historial</h2>
-        <div class="table-container">
-            <table id="tablaRegistros">
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Entrada</th>
-                        <th>Salida</th>
-                        <th>Motivo</th>
-                        <th>Supervisor</th> 
-                        <th>Desde</th>
-                        <th>Hasta</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+      <div class="horas">
+        <div>
+          <label for="horaEntrada">Hora entrada</label>
+          <input id="horaEntrada" type="time" />
         </div>
-    </div>
+        <div>
+          <label for="horaSalida">Hora salida</label>
+          <input id="horaSalida" type="time" />
+        </div>
+      </div>
 
-    <script src="script.js"></script>
+      <label for="motivo">Motivo</label>
+      <textarea id="motivo" rows="2"></textarea>
+
+      <label for="supervisor">Supervisor</label>
+      <input id="supervisor" type="text" />
+
+      <label for="Desde">Desde</label>
+      <input id="Desde" type="text" />
+
+      <label for="Hasta">Hasta</label>
+      <input id="Hasta" type="text" />
+
+      <button type="submit">Guardar Registro</button>
+    </form>
+
+    <div class="table-container" aria-live="polite">
+      <table id="tablaRegistros" role="table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            <th>Motivo</th>
+            <th>Supervisor</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="./script.js" defer></script>
 </body>
 </html>

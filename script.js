@@ -27,13 +27,13 @@ document.getElementById('bitacoraForm').addEventListener('submit', function(e) {
     let registros = JSON.parse(localStorage.getItem('movilizaciones')) || [];
 
     if (editIndex !== null) {
-        // Si estamos editando, reemplazamos el registro existente
+
         registros[editIndex] = registro;
         editIndex = null;
         document.querySelector('button[type="submit"]').textContent = 'Guardar Registro';
         document.querySelector('button[type="submit"]').style.backgroundColor = '#4818f2';
     } else {
-        // Si es nuevo, lo añadimos al final
+        
         registros.push(registro);
     }
 
